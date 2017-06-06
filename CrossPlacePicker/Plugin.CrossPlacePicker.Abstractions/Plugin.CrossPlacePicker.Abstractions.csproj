@@ -38,7 +38,10 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoordinateBounds.cs" />
+    <Compile Include="Coordinates.cs" />
     <Compile Include="ICrossPlacePicker.cs" />
+    <Compile Include="Places.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
