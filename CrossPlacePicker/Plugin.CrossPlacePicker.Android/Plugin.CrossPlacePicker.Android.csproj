@@ -68,8 +68,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Plugin.CrossPlacePicker\CrossCrossPlacePicker.cs">
-      <Link>CrossCrossPlacePicker.cs</Link>
+    <Compile Include="..\Plugin.CrossPlacePicker\CrossPlacePicker.cs">
+      <Link>CrossPlacePicker.cs</Link>
     </Compile>
     <Compile Include="ActivityEventListner.cs" />
     <Compile Include="CrossPlacePickerImplementation.cs" />

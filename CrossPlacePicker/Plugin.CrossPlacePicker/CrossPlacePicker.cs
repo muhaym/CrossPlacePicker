@@ -6,7 +6,7 @@ namespace Plugin.CrossPlacePicker
     /// <summary>
     /// Cross platform CrossPlacePicker implemenations
     /// </summary>
-    public class CrossCrossPlacePicker
+    public class CrossPlacePicker
     {
         static Lazy<ICrossPlacePicker> Implementation = new Lazy<ICrossPlacePicker>(() => CreateCrossPlacePicker(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
