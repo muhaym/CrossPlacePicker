@@ -41,6 +41,7 @@
     <Compile Include="CoordinateBounds.cs" />
     <Compile Include="Coordinates.cs" />
     <Compile Include="ICrossPlacePicker.cs" />
+    <Compile Include="PlacePickedEventArgs.cs" />
     <Compile Include="Places.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
