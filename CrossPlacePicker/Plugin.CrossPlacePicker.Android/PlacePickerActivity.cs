@@ -133,7 +133,7 @@ namespace Plugin.CrossPlacePicker
                 var rating = place.Rating;
                 var swlatitude = place.Viewport?.Southwest.Latitude;
                 var swlongitude = place.Viewport?.Southwest.Longitude;
-                var nelatitude = place.Viewport?.Northeast.Longitude;
+                var nelatitude = place.Viewport?.Northeast.Latitude;
                 var nelongitude = place.Viewport?.Northeast.Longitude;
                 CoordinateBounds bounds = null;
                 if (swlatitude != null && swlongitude != null && nelatitude != null && nelongitude != null)
