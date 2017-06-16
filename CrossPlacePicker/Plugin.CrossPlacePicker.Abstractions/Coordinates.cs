@@ -12,12 +12,18 @@ namespace Plugin.CrossPlacePicker.Abstractions
         { 
         
         }
-        public Coordinates(Coordinates coordinate)
+        public Coordinates(double Latitude, double Longitude)
         {
-            Latitude = coordinate.Latitude;
-            Longitude = coordinate.Longitude;
+            this.Latitude = Latitude;
+            this.Longitude = Longitude;
         }
+        /// <summary>
+        /// Latitude, in degrees. This value is in the range [-90, 90]. 
+        /// </summary>
         public double Latitude { get; set; }
+        /// <summary>
+        /// Longitude, in degrees. This value is in the range [-180, 180]. 
+        /// </summary>
         public double Longitude { get; set; }
     }
 }

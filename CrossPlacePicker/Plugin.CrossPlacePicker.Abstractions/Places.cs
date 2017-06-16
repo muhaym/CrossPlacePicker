@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 
 namespace Plugin.CrossPlacePicker.Abstractions
 {
+
     public class Places
     {
         public Places()
         {
         }
 
-        public Places(Places places)
+        public Places(string Name = null, string PlaceId = null, Coordinates Coordinates = null, string Phone = null, string Address = null, string Attribution = null, string WebUri = null, int PriceLevel = -1, float Rating = -1, CoordinateBounds bounds = null )
         {
-
+            this.Name = Name;
+            this.PlaceId = PlaceId;
+            this.Coordinates = Coordinates;
+            this.Phone = Phone;
+            this.Address = Address;
+            this.Attributions = Attributions;
+            this.WebUri = WebUri;
+            this.PriceLevel = PriceLevel;
+            this.Rating = Rating;
+            this.ViewPort = bounds;
         }
 
         /// <summary>
