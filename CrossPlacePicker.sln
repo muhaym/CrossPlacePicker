@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.CrossPlacePicker.iOS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.CrossPlacePicker.Android", "CrossPlacePicker\Plugin.CrossPlacePicker.Android\Plugin.CrossPlacePicker.Android.csproj", "{56A56F17-7DE1-4CA1-9617-BF32E971AC84}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2833A96C-B137-471D-A436-5BA121DEF6BB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -236,11 +234,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A6FCEF44-D2BA-42C7-B3CB-13667BCD7B54} = {2833A96C-B137-471D-A436-5BA121DEF6BB}
-		{6EDB0588-FFC5-4EF5-8A99-9E241D0F878D} = {2833A96C-B137-471D-A436-5BA121DEF6BB}
-		{2882AEEB-D4CD-4EB9-8A6C-6653B33681F0} = {2833A96C-B137-471D-A436-5BA121DEF6BB}
-		{56A56F17-7DE1-4CA1-9617-BF32E971AC84} = {2833A96C-B137-471D-A436-5BA121DEF6BB}
 	EndGlobalSection
 EndGlobal
