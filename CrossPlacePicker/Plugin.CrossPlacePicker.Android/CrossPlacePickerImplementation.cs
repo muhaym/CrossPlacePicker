@@ -41,19 +41,21 @@ namespace Plugin.CrossPlacePicker
         public Task<Places> Display(CoordinateBounds bounds = null)
         {
             int id = GetRequestId();
+
             var ntcs = new TaskCompletionSource<Places>(id);
             if (Interlocked.CompareExchange(ref this.completionSource, ntcs, null) != null)
                 throw new InvalidOperationException("Only one operation can be active at a time");
             var currentactivity = CrossCurrentActivity.Current.Activity;
             var intent = new Intent(currentactivity, typeof(PlacePickerActivity));
-            intent.SetFlags(ActivityFlags.NewTask);
-            if(bounds!=null)
+            intent.PutExtra(PlacePickerActivity.ExtraId, id);
+            if (bounds != null)
             {
                 intent.PutExtra(PlacePickerActivity.ExtraNELatitude, bounds.northeast.Latitude);
                 intent.PutExtra(PlacePickerActivity.ExtraNELongitude, bounds.northeast.Longitude);
                 intent.PutExtra(PlacePickerActivity.ExtraSWLatitude, bounds.southwest.Latitude);
                 intent.PutExtra(PlacePickerActivity.ExtraSWLongitude, bounds.southwest.Longitude);
             }
+            intent.AddFlags(ActivityFlags.NewTask);
             currentactivity.StartActivity(intent);
             EventHandler<PlacePickedEventArgs> handler = null;
             handler = (s, e) =>
@@ -63,7 +65,6 @@ namespace Plugin.CrossPlacePicker
 
                 if (e.RequestId != id)
                     return;
-
                 if (e.IsCanceled)
                     tcs.SetResult(null);
                 else if (e.Error != null)

@@ -28,37 +28,41 @@ namespace Plugin.CrossPlacePicker
         internal const string ExtraNELongitude = "ExtraNorthEastLongitude";
 
         private double? SWLatitude, SWLongitude, NELatitude, NELongitude;
-        private const int REQUEST_PLACE_PICKER = -666;
+        private const int REQUEST_PLACE_PICKER = 1;
         private int id;
         void OnPlaceSelected(PlacePickedEventArgs e)
         {
             PlacePicked?.Invoke(this, e);
         }
 
-
+        public PlacePicker.IntentBuilder intentBuilder;
+        public Intent intent;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             var bundle = (savedInstanceState ?? Intent.Extras);
             this.id = bundle.GetInt(ExtraId);
-            this.SWLatitude = bundle.GetDouble(ExtraSWLatitude);
-            this.SWLongitude = bundle.GetDouble(ExtraSWLongitude);
-            this.NELatitude = bundle.GetDouble(ExtraNELongitude);
-            this.NELongitude = bundle.GetDouble(ExtraNELongitude);
+            this.SWLatitude = bundle.GetDouble(ExtraSWLatitude, -9999);
+            this.SWLongitude = bundle.GetDouble(ExtraSWLongitude, -9999);
+            this.NELatitude = bundle.GetDouble(ExtraNELongitude, -9999);
+            this.NELongitude = bundle.GetDouble(ExtraNELongitude, -9999);
             try
             {
-                PlacePicker.IntentBuilder intentBuilder;
 
-                if (SWLatitude != null || SWLongitude != null || NELatitude != null || NELongitude != null)
+
+                if (SWLatitude != -9999 && SWLongitude != -9999 && NELatitude != -9999 && NELongitude != -9999)
                 {
                     LatLng southwest = new LatLng(SWLatitude.Value, SWLongitude.Value);
                     LatLng northeast = new LatLng(NELatitude.Value, NELongitude.Value);
                     var androidBounts = new LatLngBounds(southwest, northeast);
                     intentBuilder = new PlacePicker.IntentBuilder().SetLatLngBounds(androidBounts);
                 }
-                intentBuilder = new PlacePicker.IntentBuilder();
-                Intent intent = intentBuilder.Build(this);
-                this.StartActivityForResult(intent, REQUEST_PLACE_PICKER);
+                else
+                {
+                    intentBuilder = new PlacePicker.IntentBuilder();
+                }
+                intent = intentBuilder.Build(this);
+                StartActivityForResult(intent, REQUEST_PLACE_PICKER);
             }
             catch (GooglePlayServicesRepairableException e)
             {
@@ -121,10 +125,10 @@ namespace Plugin.CrossPlacePicker
                 {
                     coordinates = new Coordinates(coordinate.Latitude, coordinate.Longitude);
                 }
-                var phone = place.PhoneNumberFormatted.ToString();
-                var address = place.AddressFormatted.ToString();
-                var attribution = place.AttributionsFormatted.ToString();
-                var weburi = place.WebsiteUri.ToString();
+                var phone = place.PhoneNumberFormatted?.ToString();
+                var address = place.AddressFormatted?.ToString();
+                var attribution = place.AttributionsFormatted?.ToString();
+                var weburi = place.WebsiteUri?.ToString();
                 var priceLevel = place.PriceLevel;
                 var rating = place.Rating;
                 var swlatitude = place.Viewport?.Southwest.Latitude;
@@ -134,14 +138,17 @@ namespace Plugin.CrossPlacePicker
                 CoordinateBounds bounds = null;
                 if (swlatitude != null && swlongitude != null && nelatitude != null && nelongitude != null)
                 {
-                    bounds = new CoordinateBounds(new Coordinates(swlatitude.Value, swlongitude.Value), new Coordinates(nelongitude.Value, nelongitude.Value));
+                    bounds = new CoordinateBounds(new Coordinates(swlatitude.Value, swlongitude.Value), new Coordinates(nelatitude.Value, nelongitude.Value));
                 }
                 Places places = new Places(name, placeId, coordinates, phone, address, attribution, weburi, priceLevel, rating, bounds);
                 OnPlaceSelected(new PlacePickedEventArgs(this.id, false, places));
+                Finish();
+                return;
             }
             else
             {
                 OnPlaceSelected(new PlacePickedEventArgs(this.id, true));
+                Finish();
                 return;
             }
         }

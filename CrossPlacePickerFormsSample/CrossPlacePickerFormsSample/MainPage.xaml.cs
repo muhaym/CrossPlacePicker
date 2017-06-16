@@ -13,5 +13,18 @@ namespace CrossPlacePickerFormsSample
         {
             InitializeComponent();
         }
+
+        async private void Button_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = await Plugin.CrossPlacePicker.CrossCrossPlacePicker.Current.Display();
+                await DisplayAlert("Success", result.Name, "Haha");
+            }
+            catch (Exception xe)
+            {
+               await DisplayAlert("error", xe.ToString(), "Oops");
+            }
+        }
     }
 }
