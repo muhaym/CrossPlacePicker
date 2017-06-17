@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace Plugin.CrossPlacePicker.Abstractions
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class Places
     {
+        /// <summary>
+        /// Empty Constructor
+        /// </summary>
         public Places()
         {
         }
 
+        /// <summary>
+        /// Generation of Places Object
+        /// </summary>
         public Places(string Name = null, string PlaceId = null, Coordinates Coordinates = null, string Phone = null, string Address = null, string Attribution = null, string WebUri = null, int PriceLevel = -1, float Rating = -1, CoordinateBounds bounds = null )
         {
             this.Name = Name;
@@ -51,7 +59,7 @@ namespace Plugin.CrossPlacePicker.Abstractions
         ///Returns the attributions to be shown to the user if data from the Place is used.
         ///We recommend placing this information below any place information.
         ///The attributions in HTML format, or null if there are no attributions to display.
-        ///<seealso cref="">See Displaying Attributions for more details.</seealso>
+        ///<seealso>See Displaying Attributions for more details.</seealso>
         ///<returns>The attributions in HTML format, or null if there are no attributions to display.</returns>
         ///</summary>
         public string Attributions { get; private set; }

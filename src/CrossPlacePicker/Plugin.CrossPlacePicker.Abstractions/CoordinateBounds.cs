@@ -2,8 +2,24 @@
 
 namespace Plugin.CrossPlacePicker.Abstractions
 {
+    /// <summary>
+    /// Generation or Consuming Coordinate Bounds
+    /// </summary>
     public class CoordinateBounds
     {
+        /// <summary>
+        /// Empty Constructor
+        /// </summary>
+        public CoordinateBounds()
+        {
+
+        }
+
+        /// <summary>
+        /// Setup Coordinate Bounds with SouthWest and NorthEast Coordinates
+        /// </summary>
+        /// <param name="southwest"></param>
+        /// <param name="northeast"></param>
         public CoordinateBounds(Coordinates southwest, Coordinates northeast)
         {
             if (southwest == null)
@@ -12,17 +28,17 @@ namespace Plugin.CrossPlacePicker.Abstractions
                 throw new ArgumentNullException("northeast", "North East Coordinates can't be null");
             else
             {
-                this.southwest = southwest;
-                this.northeast = northeast;
+                this.Southwest = southwest;
+                this.Northeast = northeast;
             }
         }
         /// <summary>
         /// Northeast corner of the bound. 
         /// </summary>
-        public Coordinates southwest { get; set; }
+        public Coordinates Southwest { get; set; }
         /// <summary>
         /// Northeast corner of the bound. 
         /// </summary>
-        public Coordinates northeast { get; set; }
+        public Coordinates Northeast { get; set; }
     }
 }

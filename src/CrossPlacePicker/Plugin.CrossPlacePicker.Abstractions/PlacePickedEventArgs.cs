@@ -6,18 +6,28 @@ using System.Threading.Tasks;
 
 namespace Plugin.CrossPlacePicker.Abstractions
 {
+    /// <summary>
+    /// Event Arguments for Place Picked Event
+    /// </summary>
     public class PlacePickedEventArgs
        : EventArgs
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="error"></param>
         public PlacePickedEventArgs(int id, Exception error)
         {
-            if (error == null)
-                throw new ArgumentNullException("error");
-
             RequestId = id;
-            Error = error;
+            Error = error ?? throw new ArgumentNullException("error");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="isCanceled"></param>
+        /// <param name="places"></param>
         public PlacePickedEventArgs(int id, bool isCanceled, Places places = null)
         {
             RequestId = id;
@@ -27,31 +37,42 @@ namespace Plugin.CrossPlacePicker.Abstractions
 
             Places = places;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int RequestId
         {
             get;
             private set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsCanceled
         {
             get;
             private set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Exception Error
         {
             get;
             private set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Places Places
         {
             get;
             private set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Task<Places> ToTask()
         {
             var tcs = new TaskCompletionSource<Places>();

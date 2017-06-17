@@ -48,14 +48,12 @@ namespace Plugin.CrossPlacePicker
             this.NELongitude = bundle.GetDouble(ExtraNELongitude, -9999);
             try
             {
-
-
                 if (SWLatitude != -9999 && SWLongitude != -9999 && NELatitude != -9999 && NELongitude != -9999)
                 {
                     LatLng southwest = new LatLng(SWLatitude.Value, SWLongitude.Value);
                     LatLng northeast = new LatLng(NELatitude.Value, NELongitude.Value);
-                    var androidBounts = new LatLngBounds(southwest, northeast);
-                    intentBuilder = new PlacePicker.IntentBuilder().SetLatLngBounds(androidBounts);
+                    var androidBounds = new LatLngBounds(southwest, northeast);
+                    intentBuilder = new PlacePicker.IntentBuilder().SetLatLngBounds(androidBounds);
                 }
                 else
                 {
@@ -66,18 +64,20 @@ namespace Plugin.CrossPlacePicker
             }
             catch (GooglePlayServicesRepairableException e)
             {
-
                 OnPlaceSelected(new PlacePickedEventArgs(id, e));
                 GoogleApiAvailability.Instance.GetErrorDialog(this, e.ConnectionStatusCode, 0).Show();
+                Finish();
             }
             catch (GooglePlayServicesNotAvailableException e)
-            {
+            {   
                 OnPlaceSelected(new PlacePickedEventArgs(id, e));
                 Toast.MakeText(this, "Google Play Services is not available.", ToastLength.Long).Show();
+                Finish();
             }
             catch (Exception e)
             {
                 OnPlaceSelected(new PlacePickedEventArgs(id, e));
+                Finish();
             }
         }
 

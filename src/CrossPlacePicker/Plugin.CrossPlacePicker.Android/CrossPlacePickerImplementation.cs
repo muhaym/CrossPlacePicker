@@ -20,10 +20,6 @@ namespace Plugin.CrossPlacePicker
     [Preserve(AllMembers = true)]
     public class CrossPlacePickerImplementation : ICrossPlacePicker
     {
-        private static int REQUEST_PLACE_PICKER = 1;
-
-
-
         private int requestId;
         private TaskCompletionSource<Places> completionSource;
 
@@ -37,7 +33,11 @@ namespace Plugin.CrossPlacePicker
 
             return id;
         }
-
+        /// <summary>
+        /// Display's Place Picker UI
+        /// </summary>
+        /// <param name="bounds"></param>
+        /// <returns></returns>
         public Task<Places> Display(CoordinateBounds bounds = null)
         {
             int id = GetRequestId();
@@ -50,10 +50,10 @@ namespace Plugin.CrossPlacePicker
             intent.PutExtra(PlacePickerActivity.ExtraId, id);
             if (bounds != null)
             {
-                intent.PutExtra(PlacePickerActivity.ExtraNELatitude, bounds.northeast.Latitude);
-                intent.PutExtra(PlacePickerActivity.ExtraNELongitude, bounds.northeast.Longitude);
-                intent.PutExtra(PlacePickerActivity.ExtraSWLatitude, bounds.southwest.Latitude);
-                intent.PutExtra(PlacePickerActivity.ExtraSWLongitude, bounds.southwest.Longitude);
+                intent.PutExtra(PlacePickerActivity.ExtraNELatitude, bounds.Northeast.Latitude);
+                intent.PutExtra(PlacePickerActivity.ExtraNELongitude, bounds.Northeast.Longitude);
+                intent.PutExtra(PlacePickerActivity.ExtraSWLatitude, bounds.Southwest.Latitude);
+                intent.PutExtra(PlacePickerActivity.ExtraSWLongitude, bounds.Southwest.Longitude);
             }
             intent.AddFlags(ActivityFlags.NewTask);
             currentactivity.StartActivity(intent);

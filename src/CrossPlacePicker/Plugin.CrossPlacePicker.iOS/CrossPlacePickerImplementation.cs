@@ -32,6 +32,11 @@ namespace Plugin.CrossPlacePicker
         {
             PlacePicked?.Invoke(this, e);
         }
+        /// <summary>
+        /// Displays Place Picker UI.
+        /// </summary>
+        /// <param name="bounds"></param>
+        /// <returns></returns>
         public Task<Places> Display(Abstractions.CoordinateBounds bounds = null)
         {
             int id = GetRequestId();
@@ -43,8 +48,8 @@ namespace Plugin.CrossPlacePicker
             PlacePickerConfig config;
             if (bounds != null)
             {
-                var northEast = new CLLocationCoordinate2D(bounds.northeast.Latitude, bounds.northeast.Longitude);
-                var southwest = new CLLocationCoordinate2D(bounds.southwest.Latitude, bounds.southwest.Longitude);
+                var northEast = new CLLocationCoordinate2D(bounds.Northeast.Latitude, bounds.Northeast.Longitude);
+                var southwest = new CLLocationCoordinate2D(bounds.Southwest.Latitude, bounds.Southwest.Longitude);
                 iosBound = new Google.Maps.CoordinateBounds(northEast, southwest);
                 config = new PlacePickerConfig(iosBound);
             }

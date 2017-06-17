@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace Plugin.CrossPlacePicker.Abstractions
 {
+    /// <summary>
+    /// Generate or Consume Coordinates.
+    /// </summary>
     public class Coordinates
     {
+        /// <summary>
+        /// Empty Constructor
+        /// </summary>
         public Coordinates()
         { 
         
         }
+        /// <summary>
+        /// Create Coordinates with Latitude and Longitude of type double.
+        /// </summary>
+        /// <param name="Latitude"></param>
+        /// <param name="Longitude"></param>
         public Coordinates(double Latitude, double Longitude)
         {
             this.Latitude = Latitude;
