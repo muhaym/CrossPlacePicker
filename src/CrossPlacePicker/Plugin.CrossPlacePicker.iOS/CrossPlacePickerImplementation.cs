@@ -17,6 +17,7 @@ namespace Plugin.CrossPlacePicker
         PlacePicker picker;
         internal static event EventHandler<PlacePickedEventArgs> PlacePicked;
         private int requestId;
+        private int? currentRequest;
         private TaskCompletionSource<Places> completionSource;
         private int GetRequestId()
         {
@@ -39,11 +40,10 @@ namespace Plugin.CrossPlacePicker
         /// <returns></returns>
         public Task<Places> Display(Abstractions.CoordinateBounds bounds = null)
         {
-            int id = GetRequestId();
-            var ntcs = new TaskCompletionSource<Places>(id);
+            currentRequest = GetRequestId();
+            var ntcs = new TaskCompletionSource<Places>(currentRequest);
             if (Interlocked.CompareExchange(ref this.completionSource, ntcs, null) != null)
                 throw new InvalidOperationException("Only one operation can be active at a time");
-
             Google.Maps.CoordinateBounds iosBound;
             PlacePickerConfig config;
             if (bounds != null)
@@ -65,7 +65,7 @@ namespace Plugin.CrossPlacePicker
                 var tcs = Interlocked.Exchange(ref this.completionSource, null);
                 PlacePicked -= handler;
 
-                if (e.RequestId != id)
+                if (e.RequestId != currentRequest)
                     return;
                 if (e.IsCanceled)
                     tcs.SetResult(null);
@@ -102,15 +102,15 @@ namespace Plugin.CrossPlacePicker
                     bounds = new Abstractions.CoordinateBounds(new Coordinates(swlatitude.Value, swlongitude.Value), new Coordinates(nelatitude.Value, nelongitude.Value));
                 }
                 Places places = new Places(name, placeId, coordinates, phone, address, attribution, weburi, Convert.ToInt32(priceLevel), rating, bounds);
-                OnPlaceSelected(new PlacePickedEventArgs(this.requestId, false, places));
+                OnPlaceSelected(new PlacePickedEventArgs(currentRequest.Value, false, places));
             }
             else if (error != null)
             {
-                OnPlaceSelected(new PlacePickedEventArgs(requestId, new Exception(error.LocalizedFailureReason)));
+                OnPlaceSelected(new PlacePickedEventArgs(currentRequest.Value, new Exception(error.LocalizedFailureReason)));
             }
             else
             {
-                OnPlaceSelected(new PlacePickedEventArgs(requestId, true));
+                OnPlaceSelected(new PlacePickedEventArgs(currentRequest.Value, true));
             }
         }
     }
