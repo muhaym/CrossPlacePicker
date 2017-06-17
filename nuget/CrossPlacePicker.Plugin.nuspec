@@ -32,15 +32,15 @@
 	</metadata>
 	<files>
 		<!--Core-->
-		<file src="src\CrossPlacePicker\Plugin.CrossPlacePicker\bin\Release\Plugin.CrossPlacePicker.*" target="lib\portable-net45+wp80+win8+wpa81" />
-		<file src="src\CrossPlacePicker\Plugin.CrossPlacePicker.Abstractions\bin\Release\Plugin.CrossPlacePicker.Abstractions.*" target="lib\portable-net45+wp80+win8+wpa81" />		
+		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker\bin\Release\Plugin.CrossPlacePicker.*" target="lib\portable-net45+wp80+win8+wpa81" />
+		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker.Abstractions\bin\Release\Plugin.CrossPlacePicker.Abstractions.*" target="lib\portable-net45+wp80+win8+wpa81" />		
 		
 		<!--Xamarin.Android-->
-		<file src="src\CrossPlacePicker\Plugin.CrossPlacePicker.Android\bin\Release\Plugin.CrossPlacePicker.*" target="lib\MonoAndroid10" />
-		<file src="src\CrossPlacePicker\Plugin.CrossPlacePicker.Abstractions\bin\Release\Plugin.CrossPlacePicker.Abstractions.*" target="lib\MonoAndroid10" />
+		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker.Android\bin\Release\Plugin.CrossPlacePicker.*" target="lib\MonoAndroid10" />
+		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker.Abstractions\bin\Release\Plugin.CrossPlacePicker.Abstractions.*" target="lib\MonoAndroid10" />
 
 		<!--Xamarin.iOS-->
-		<file src="src\CrossPlacePicker\Plugin.CrossPlacePicker.iOS\bin\iPhone\Release\Plugin.CrossPlacePicker.*" target="lib\Xamarin.iOS10" />
-		<file src="src\CrossPlacePicker\Plugin.CrossPlacePicker.Abstractions\bin\Release\Plugin.CrossPlacePicker.Abstractions.*" target="lib\Xamarin.iOS10" />
+		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker.iOS\bin\iPhone\Release\Plugin.CrossPlacePicker.*" target="lib\Xamarin.iOS10" />
+		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker.Abstractions\bin\Release\Plugin.CrossPlacePicker.Abstractions.*" target="lib\Xamarin.iOS10" />
 	</files>
 </package>
