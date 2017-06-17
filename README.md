@@ -59,14 +59,8 @@ try
 Please read these as they must be implemented for all platforms.
 
 #### Android 
-The `ACCESS_FINE_LOCATION` permission is required. Additionally, if your users are running Marshmallow the Plugin will automatically prompt them for runtime permissions. You must add the Permission Plugin code into your Main or Base Activities:
+The `ACCESS_FINE_LOCATION` permission is required. 
 
-```csharp
-public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-{
-    PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-}
-```
 - In your AndroidManifest.xml file, add your API key in a meta-data tag (ensure you are within the `<application>` tag as follows:
 
 ```xml
@@ -102,6 +96,10 @@ var apikey = "YOUR-API-KEY-HERE";
 PlacesClient.ProvideApiKey(apikey);
 MapServices.ProvideAPIKey(apikey);
 ```
+#### Troubleshooting
+
+Incase if the place picker is not launching or automatically being hidden, please make sure that you have generated API key from Google Developer Console. If you are facing any other problem, please open an issue with Application Output.
+[Google Signup and API Keys](https://developers.google.com/places/android-api/signup)
 
 #### License
 Licensed under MIT, see license file. This is a derivative to [Xamarin.Mobile's Media](http://github.com/xamarin/xamarin.mobile) with a cross platform API and other enhancements.
