@@ -39,6 +39,10 @@ namespace PlacePickerForms
                 var northEast = new Coordinates(-85, 180);
                 var CoordinateBounds = new CoordinateBounds(southWest, northEast);
                 var result = await CrossPlacePicker.Current.Display(CoordinateBounds);
+                if (result != null)
+                {
+                    await DisplayAlert(result.Name, "Latitude: " + result.Coordinates.Latitude + "\nLongitude: " + result.Coordinates.Longitude, "OK");
+                }
             }
             catch (Exception ex)
             {
