@@ -11,6 +11,7 @@ namespace Plugin.CrossPlacePicker
     /// <summary>
     /// Implementation for CrossPlacePicker
     /// </summary>
+    [Preserve(AllMembers = true)]
     public class CrossPlacePickerImplementation : ICrossPlacePicker
     {
         PlacePicker picker;
