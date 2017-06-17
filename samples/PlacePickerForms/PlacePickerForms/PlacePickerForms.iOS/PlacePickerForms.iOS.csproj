@@ -122,12 +122,6 @@
     <Reference Include="Google.Maps, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Google.iOS.Maps.2.1.0.1\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.CrossPlacePicker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fantacode.Plugin.CrossPlacePicker.1.0.1\lib\Xamarin.iOS10\Plugin.CrossPlacePicker.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.CrossPlacePicker.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fantacode.Plugin.CrossPlacePicker.1.0.1\lib\Xamarin.iOS10\Plugin.CrossPlacePicker.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -144,10 +138,16 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.247\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Plugin.CrossPlacePicker.Abstractions">
+      <HintPath>..\..\packages\Fantacode.Plugin.CrossPlacePicker.1.0.2\lib\Xamarin.iOS10\Plugin.CrossPlacePicker.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.CrossPlacePicker">
+      <HintPath>..\..\packages\Fantacode.Plugin.CrossPlacePicker.1.0.2\lib\Xamarin.iOS10\Plugin.CrossPlacePicker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PlacePickerForms\PlacePickerForms.csproj">
-      <Project>{69e15658-b807-4fd5-a569-cd737ac7df35}</Project>
+      <Project>{D7A223CC-3064-4518-87BA-3E0A19E5A16F}</Project>
       <Name>PlacePickerForms</Name>
     </ProjectReference>
   </ItemGroup>
