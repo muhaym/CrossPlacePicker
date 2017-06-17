@@ -3,7 +3,7 @@
 Simple cross platform plugin to pick place using google maps with the help of Cross Platform API.
 
 ### Setup
-* Available on NuGet: http://www.nuget.org/packages/Fantacode.Plugin.CrossPlacePicker [![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://www.nuget.org/packages/Fantacode.Plugin.CrossPlacePicker)
+* Available on NuGet: http://www.nuget.org/packages/Fantacode.Plugin.CrossPlacePicker [![NuGet](https://img.shields.io/nuget/v/Fantacode.Plugin.CrossPlacePicker.svg)](https://www.nuget.org/packages/Fantacode.Plugin.CrossPlacePicker)
 * Install into your PCL project and Client projects.
 * Please see the additional setup for each platforms permissions.
 
