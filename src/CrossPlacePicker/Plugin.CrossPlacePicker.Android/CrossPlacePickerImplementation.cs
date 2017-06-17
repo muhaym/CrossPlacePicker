@@ -41,7 +41,6 @@ namespace Plugin.CrossPlacePicker
         public Task<Places> Display(CoordinateBounds bounds = null)
         {
             int id = GetRequestId();
-
             var ntcs = new TaskCompletionSource<Places>(id);
             if (Interlocked.CompareExchange(ref this.completionSource, ntcs, null) != null)
                 throw new InvalidOperationException("Only one operation can be active at a time");
