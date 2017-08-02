@@ -44,7 +44,7 @@ namespace Plugin.CrossPlacePicker
             this.id = bundle.GetInt(ExtraId);
             this.SWLatitude = bundle.GetDouble(ExtraSWLatitude, -9999);
             this.SWLongitude = bundle.GetDouble(ExtraSWLongitude, -9999);
-            this.NELatitude = bundle.GetDouble(ExtraNELongitude, -9999);
+            this.NELatitude = bundle.GetDouble(ExtraNELatitude, -9999);
             this.NELongitude = bundle.GetDouble(ExtraNELongitude, -9999);
             try
             {
