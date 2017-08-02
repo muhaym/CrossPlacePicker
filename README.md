@@ -2,6 +2,8 @@
 
 Simple cross platform plugin to pick place using google maps with the help of Cross Platform API.
 
+[![out.gif](https://s30.postimg.org/5gawjkfy9/out.gif)](https://postimg.org/image/twt2e1got/)
+
 ### Setup
 * Available on NuGet: http://www.nuget.org/packages/Fantacode.Plugin.CrossPlacePicker [![NuGet](https://img.shields.io/nuget/v/Fantacode.Plugin.CrossPlacePicker.svg)](https://www.nuget.org/packages/Fantacode.Plugin.CrossPlacePicker)
 * Install into your PCL project and Client projects.
@@ -59,14 +61,8 @@ try
 Please read these as they must be implemented for all platforms.
 
 #### Android 
-The `ACCESS_FINE_LOCATION` permission is required. Additionally, if your users are running Marshmallow the Plugin will automatically prompt them for runtime permissions. You must add the Permission Plugin code into your Main or Base Activities:
+The `ACCESS_FINE_LOCATION` permission is required. 
 
-```csharp
-public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-{
-    PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-}
-```
 - In your AndroidManifest.xml file, add your API key in a meta-data tag (ensure you are within the `<application>` tag as follows:
 
 ```xml
@@ -102,21 +98,8 @@ var apikey = "YOUR-API-KEY-HERE";
 PlacesClient.ProvideApiKey(apikey);
 MapServices.ProvideAPIKey(apikey);
 ```
+#### Troubleshooting
 
-#### License
-Licensed under MIT, see license file. This is a derivative to [Xamarin.Mobile's Media](http://github.com/xamarin/xamarin.mobile) with a cross platform API and other enhancements.
-//
-//  Copyright 2011-2013, Xamarin Inc.
-//
-//    Licensed under the Apache License, Version 2.0 (the "License");
-//    you may not use this file except in compliance with the License.
-//    You may obtain a copy of the License at
-//
-//        http://www.apache.org/licenses/LICENSE-2.0
-//
-//    Unless required by applicable law or agreed to in writing, software
-//    distributed under the License is distributed on an "AS IS" BASIS,
-//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//    See the License for the specific language governing permissions and
-//    limitations under the License.
-//
+Incase if the place picker is not launching or automatically being hidden, please make sure that you have generated API key from Google Developer Console. If you are facing any other problem, please open an issue with Application Output.
+[Google Signup and API Keys](https://developers.google.com/places/android-api/signup)
+

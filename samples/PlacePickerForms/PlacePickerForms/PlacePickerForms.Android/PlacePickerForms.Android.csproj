@@ -54,12 +54,6 @@
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="Plugin.CrossPlacePicker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fantacode.Plugin.CrossPlacePicker.1.0.1\lib\MonoAndroid10\Plugin.CrossPlacePicker.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.CrossPlacePicker.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fantacode.Plugin.CrossPlacePicker.1.0.1\lib\MonoAndroid10\Plugin.CrossPlacePicker.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.CurrentActivity, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.CurrentActivity.1.0.1\lib\MonoAndroid10\Plugin.CurrentActivity.dll</HintPath>
     </Reference>
@@ -143,6 +137,12 @@
     <Reference Include="Xamarin.GooglePlayServices.Tasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.CrossPlacePicker.Abstractions">
+      <HintPath>..\..\packages\Fantacode.Plugin.CrossPlacePicker.1.0.2\lib\MonoAndroid10\Plugin.CrossPlacePicker.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.CrossPlacePicker">
+      <HintPath>..\..\packages\Fantacode.Plugin.CrossPlacePicker.1.0.2\lib\MonoAndroid10\Plugin.CrossPlacePicker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -171,7 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PlacePickerForms\PlacePickerForms.csproj">
-      <Project>{69e15658-b807-4fd5-a569-cd737ac7df35}</Project>
+      <Project>{D7A223CC-3064-4518-87BA-3E0A19E5A16F}</Project>
       <Name>PlacePickerForms</Name>
     </ProjectReference>
   </ItemGroup>
