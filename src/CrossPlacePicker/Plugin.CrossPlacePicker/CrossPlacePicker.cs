@@ -28,7 +28,7 @@ namespace Plugin.CrossPlacePicker
 
         static ICrossPlacePicker CreateCrossPlacePicker()
         {
-#if PORTABLE
+#if NETSTANDARD1_0
             return null;
 #else
         return new CrossPlacePickerImplementation();

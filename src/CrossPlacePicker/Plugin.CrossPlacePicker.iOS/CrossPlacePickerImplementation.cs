@@ -1,4 +1,4 @@
-using Plugin.CrossPlacePicker.Abstractions;
+﻿using Plugin.CrossPlacePicker.Abstractions;
 using System;
 using System.Threading.Tasks;
 using Google.Maps;
