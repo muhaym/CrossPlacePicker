@@ -46,6 +46,9 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Plugin.CrossPlacePicker\CrossPlacePicker.cs">
+      <Link>CrossPlacePicker.cs</Link>
+    </Compile>
     <Compile Include="CrossPlacePickerImplementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
