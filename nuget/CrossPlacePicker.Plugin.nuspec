@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-	<metadata minClientVersion="2.8.3">
+	<metadata minClientVersion="2.8.1">
 		<id>Fantacode.Plugin.CrossPlacePicker</id>
-		<version>1.0.4</version>
+		<version>1.0.5</version>
 		<title>CrossPlacePicker Plugin for Xamarin Android and iOS</title>
 		<authors>Abdul Muhaymin Arif</authors>
 		<owners>Abdul Muhaymin Arif</owners>
@@ -19,23 +19,22 @@
        <group targetFramework="netstandard1.0">
            <dependency id="NETStandard.Library" version="1.6.1" />
       </group>
+    
       <group targetFramework="MonoAndroid10">
-        <dependency id="Xamarin.Android.Support.v4" version="25.3.1"/>
+        <dependency id="Xamarin.Android.Support.v4" version="42.1021.1"/>
         <dependency id="Plugin.CurrentActivity" version="1.0.1"/>
-        <dependency id="Xamarin.GooglePlayServices.Base" version="42.1021.1" />
-        <dependency id="Xamarin.GooglePlayServices.Basement" version="42.1021.1"/>
         <dependency id="Xamarin.GooglePlayServices.Maps" version="42.1021.1" />
         <dependency id="Xamarin.GooglePlayServices.Places" version="42.1021.1"/>
-        <dependency id="Xamarin.GooglePlayServices.Tasks" version="42.1021.1"/>
       </group>
       <group targetFramework="xamarinios10">
-        <dependency id="Xamarin.Google.iOS.Maps" version="2.1.0.1"/>
+        <dependency id="Xamarin.Google.iOS.Maps" version="2.5.0"/>
+        <dependency id="Xamarin.Google.iOS.Places" version="2.5.0"/>
       </group>
-		</dependencies>
+    </dependencies>
 	</metadata>
 	<files>
 		<!--Core-->
-		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker\bin\Release\netstandard1.3\Plugin.CrossPlacePicker.*" target="lib\netstandard1.0" />
+		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker\bin\Release\netstandard1.0\Plugin.CrossPlacePicker.*" target="lib\netstandard1.0" />
 		
 		<!--Xamarin.Android-->
 		<file src="..\src\CrossPlacePicker\Plugin.CrossPlacePicker.Android\bin\Release\Plugin.CrossPlacePicker.*" target="lib\MonoAndroid10" />

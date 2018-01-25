@@ -5,6 +5,10 @@ using Google.Maps;
 using CoreLocation;
 using Foundation;
 using System.Threading;
+using Google.Places.Picker;
+using UIKit;
+using System.Linq;
+using Google.Places;
 
 namespace Plugin.CrossPlacePicker
 {
@@ -12,13 +16,16 @@ namespace Plugin.CrossPlacePicker
     /// Implementation for CrossPlacePicker
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class CrossPlacePickerImplementation : ICrossPlacePicker
+    public class CrossPlacePickerImplementation : ICrossPlacePicker, IPlacePickerViewControllerDelegate
     {
-        PlacePicker picker;
         internal static event EventHandler<PlacePickedEventArgs> PlacePicked;
         private int requestId;
         private int? currentRequest;
         private TaskCompletionSource<Places> completionSource;
+        private PlacePickerViewController placePickerViewController;
+
+        public IntPtr Handle => throw new NotImplementedException();
+
         private int GetRequestId()
         {
             int id = this.requestId;
@@ -29,17 +36,33 @@ namespace Plugin.CrossPlacePicker
 
             return id;
         }
-        void OnPlaceSelected(PlacePickedEventArgs e)
-        {
-            PlacePicked?.Invoke(this, e);
-        }
+
         /// <summary>
         /// Displays Place Picker UI.
         /// </summary>
         /// <param name="bounds"></param>
         /// <returns></returns>
+        /// 
+        UIViewController PlaceViewController;
         public Task<Places> Display(Abstractions.CoordinateBounds bounds = null)
         {
+            PlaceViewController = null;
+            UIWindow window = UIApplication.SharedApplication.KeyWindow;
+            if (window == null)
+                throw new InvalidOperationException("There's no current active window");
+            if (window.WindowLevel == UIWindowLevel.Normal)
+                PlaceViewController = window.RootViewController;
+
+            if (PlaceViewController == null)
+            {
+                window = UIApplication.SharedApplication.Windows.OrderByDescending(w => w.WindowLevel).FirstOrDefault(w => w.RootViewController != null && w.WindowLevel == UIWindowLevel.Normal);
+                if (window == null)
+                    throw new InvalidOperationException("Could not find current view controller");
+                else
+                    PlaceViewController = window.RootViewController;
+            }
+            while (PlaceViewController.PresentedViewController != null)
+                PlaceViewController = PlaceViewController.PresentedViewController;
             currentRequest = GetRequestId();
             var ntcs = new TaskCompletionSource<Places>(currentRequest);
             if (Interlocked.CompareExchange(ref this.completionSource, ntcs, null) != null)
@@ -57,8 +80,9 @@ namespace Plugin.CrossPlacePicker
             {
                 config = new PlacePickerConfig(null);
             }
-            picker = new PlacePicker(config);
-            picker.PickPlaceWithCallback(PlacePickedCallBack);
+            placePickerViewController = new PlacePickerViewController(config) { Delegate = this };
+            PlaceViewController.PresentViewController(placePickerViewController, true, null);
+
             EventHandler<PlacePickedEventArgs> handler = null;
             handler = (s, e) =>
             {
@@ -78,12 +102,12 @@ namespace Plugin.CrossPlacePicker
             return completionSource.Task;
         }
 
-        private void PlacePickedCallBack(Place place, NSError error)
+        public void DidPickPlace(PlacePickerViewController viewController, Place place)
         {
             if (place != null)
             {
                 var name = place.Name;
-                var placeId = place.PlaceID;
+                var placeId = place.Id;
                 var coordinate = place.Coordinate;
                 Coordinates coordinates = new Coordinates(coordinate.Latitude, coordinate.Longitude);
                 var phone = place.PhoneNumber;
@@ -104,14 +128,32 @@ namespace Plugin.CrossPlacePicker
                 Places places = new Places(name, placeId, coordinates, phone, address, attribution, weburi, Convert.ToInt32(priceLevel), rating, bounds);
                 OnPlaceSelected(new PlacePickedEventArgs(currentRequest.Value, false, places));
             }
-            else if (error != null)
-            {
-                OnPlaceSelected(new PlacePickedEventArgs(currentRequest.Value, new Exception(error.LocalizedFailureReason)));
-            }
             else
             {
                 OnPlaceSelected(new PlacePickedEventArgs(currentRequest.Value, true));
             }
+            if (viewController.NavigationController == PlaceViewController?.NavigationController)
+                PlaceViewController?.NavigationController.PopViewController(true);
+            else
+                PlaceViewController?.DismissViewController(true, null);
         }
+
+        public void Dispose()
+        {
+            placePickerViewController?.Dispose();
+        }
+
+        [Export("placePickerDidCancel:")]
+        void DidCancel(PlacePickerViewController viewController)
+        {
+            PlaceViewController?.DismissViewController(true, null);
+            OnPlaceSelected(new PlacePickedEventArgs(currentRequest.Value, true));
+        }
+
+        void OnPlaceSelected(PlacePickedEventArgs e)
+        {
+            PlacePicked?.Invoke(this, e);
+        }
+
     }
 }
