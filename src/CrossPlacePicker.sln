@@ -11,12 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.CrossPlacePicker.And
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.CrossPlacePicker.iOS", "CrossPlacePicker\Plugin.CrossPlacePicker.iOS\Plugin.CrossPlacePicker.iOS.csproj", "{C6146C7B-8741-4833-85E0-BE4365593561}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Android", "Test\Test.Android\Test.Android.csproj", "{B2D00205-38A9-4301-91AA-2673CE9B5B0B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.iOS", "Test\Test.iOS\Test.iOS.csproj", "{25032E01-599A-433A-96A4-63FCAEDB315A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test\Test.csproj", "{1BF8BE5C-BE64-4027-860F-40AA89EAC505}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
