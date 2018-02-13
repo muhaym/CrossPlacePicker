@@ -21,7 +21,6 @@
       </group>
     
       <group targetFramework="MonoAndroid10">
-        <dependency id="Xamarin.Android.Support.v4" version="42.1021.1"/>
         <dependency id="Plugin.CurrentActivity" version="1.0.1"/>
         <dependency id="Xamarin.GooglePlayServices.Maps" version="42.1021.1" />
         <dependency id="Xamarin.GooglePlayServices.Places" version="42.1021.1"/>
