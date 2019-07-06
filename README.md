@@ -1,3 +1,6 @@
+[Depreciated] This library is depreciated due to Google Place Picker depreciation on 29th of July 2019.
+
+
 ## Cross Place Picker for Xamarin Android and iOS
 
 Simple cross platform plugin to pick place using google maps with the help of Cross Platform API.
